@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>regist</servlet-name>
+    <servlet-class>registServlet.regist</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>login</servlet-name>
+    <servlet-class>loginServlet.login</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>refind</servlet-name>
+    <servlet-class>refindServlet.refind</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>activitySubmit</servlet-name>
+    <servlet-class>activitySubmit.activitySubmit</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>imgUploadAction</servlet-name>
+    <servlet-class>ImgUploadAction.imgUploadAction</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>detial</servlet-name>
+    <servlet-class>Detial.detial</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>detial1</servlet-name>
+    <servlet-class>detial1Servlet.detial1</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ImgUploadAction</servlet-name>
+    <servlet-class>com.home.ImgUploadAction</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>preview</servlet-name>
+    <servlet-class>activityPreview.preview</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>closePage</servlet-name>
+    <servlet-class>ClosePage.closePage</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>regist</servlet-name>
+    <url-pattern>/servlet/regist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>login</servlet-name>
+    <url-pattern>/servlet/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>refind</servlet-name>
+    <url-pattern>/servlet/refind</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>activitySubmit</servlet-name>
+    <url-pattern>/servlet/activitySubmit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>imgUploadAction</servlet-name>
+    <url-pattern>/servlet/ImgUpload.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>detial</servlet-name>
+    <url-pattern>/servlet/detial</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>detial1</servlet-name>
+    <url-pattern>/servlet/detial1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ImgUploadAction</servlet-name>
+    <url-pattern>/servlet/ImgUploadAction</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>preview</servlet-name>
+    <url-pattern>/servlet/preview</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>closePage</servlet-name>
+    <url-pattern>/servlet/closePage</url-pattern>
+  </servlet-mapping>	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
