@@ -23,7 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
- <h1> 我聚--联系我们</h1>
+ <div style="width:50%;height:40px;float:left;font-family:楷体;font-size:68px">   
+   &nbsp;&nbsp;&nbsp;&nbsp; 我聚--联系我们
+   </div>
+    <div style="width:50%;height:20px;float:right;font-family:宋体;font-size:24px">
+    <br><br>
     <a href="welcome.jsp" target="_top" title="welcome">首页</a> &nbsp;&nbsp;
     <a href="activity.jsp" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
         <%
@@ -38,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <a href="/wjw/myactivity.jsp?username=<%=loginname%>" target="_parent" title="myactivity">发布活动</a>
   	&nbsp;&nbsp;
   	  <a href="contact.jsp"title="contact">联系我们</a> 
-      &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;
         <%
     	if(loginname!=""&&password!="")
     	{
@@ -51,8 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	else
     	out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
       %>
+    </div>
     <br><br><br><br>
-    
     
   </body>
 </html>

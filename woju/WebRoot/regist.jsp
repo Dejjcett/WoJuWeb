@@ -21,15 +21,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+  <body background="2.jpg">
   <body>
-   <h1>注册</h1>
+  <div style="width:50%;height:40px;float:left;font-family:楷体;font-size:72px">   
+   &nbsp;&nbsp;&nbsp;&nbsp;注册
+</div>
+<div style="width:50%;height:20px;float:right;font-family:宋体;font-size:24px">
+    <br><br>
       <a href="welcome.jsp" target="_top" title="welcome">首页</a> &nbsp;&nbsp;
     <a href="activity.jsp" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
     <a href="/wjw/myactivity.jsp" target="_parent" title="myactivity">发布活动</a> &nbsp;&nbsp;
     <a href="contact.jsp"title="contact">联系我们</a> 
       &nbsp;&nbsp;&nbsp;&nbsp;
        <a href="login.jsp"title="login" >已有帐号，登录</a>
+       </div>
  	<br><br><br><br>
   
   <script language="javascript">
@@ -65,39 +70,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
   </script>
   
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  
+    <div style="width:40%;height:40px;float:right;font-family:宋体;font-size:48px">
+    <br>
+    &nbsp;&nbsp; 注册信息栏：
+    </div>
+    <br><br><br><br><br><br><br>
+    <div style="width:35%;height:40px;float:right;">
     <form name="regist"  action="/woju/servlet/regist"  method="post" 
     							 onsubmit="return validate(this)">
-    	<table bgColor="#ffffff" border="0">
+    	<table bgColor="#ffffff" border="0"style="font-family:楷体;font-size:30px">
+    	<tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr>
     		<tr>
     		  <td align="right">用户名：</td>
-    		  <td align="left"><input type="text" name="username" size="20" maxlength="10"></td>
+    		  <td align="left"><input type="text" name="username" size="20" maxlength="10"style=" height:30px;" /></td>
     		</tr>
+    		<tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr>
 <!--     		<tr>
     		  <td align="right">手机：</td>
     		  <td align="left"><input type="text" name="telphone" size="20" maxlength="11"></td>
     		  <td align="center"><input type="button" onClick="return sendCode()" name="send" value="发送验证码"></td>
     		</tr>
-  -->  		<tr>
+  -->  	
+  			<tr>
     		  <td align="right">密码：</td>
-    		  <td align="left"><input type="password" name="password" size="20" maxlength="10"></td>
+    		  <td align="left"><input type="password" name="password" size="20" maxlength="10"style=" height:30px;" /></td>
     		</tr>
+    		<tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr>
     		<tr>
-    		  <td align="right">密码：</td>
-    		  <td align="left"><input type="password" name="passwResure" size="20" maxlength="10"></td>
+    		  <td align="right">确认密码：</td>
+    		  <td align="left"><input type="password" name="passwResure" size="20" maxlength="10"style=" height:30px;" /></td>
     		</tr>
   <!--  		
     		<tr>
     		  <td align="right">手机验证码：</td>
     		  <td align="left"><input type="text" name="verifiCode" size="5" maxlength="4"></td>
     		</tr>
- -->   		
+ -->   	<tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr>	
     		<tr>
-    		  <td align="right"><input type="reset" name="reset" value="重置"></td>
-    		  <td align="left"><input type="submit" name="submit" value="确认"></td>
+    		  <td align="right"><input type="reset" name="reset" value="重置"style=" height:30px;" /></td>
+    		  <td align="center"><input type="submit" name="submit" value="确认"style=" height:30px;" /></td>
     		</tr>
     	</table>
 
 	</form>
-
+</div>
   </body>
 </html>

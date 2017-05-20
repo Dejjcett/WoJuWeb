@@ -34,7 +34,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-  <h1> 我聚--近期活动</h1>
+  <div style="width:50%;height:40px;float:left;font-family:楷体;font-size:72px">   
+   &nbsp;&nbsp;&nbsp;&nbsp;我聚--近期活动
+   </div>
+   <div style="width:50%;height:20px;float:right;font-family:宋体;font-size:24px">
+    <br><br>
     <a href="welcome.jsp" target="_top" title="welcome">首页</a> &nbsp;&nbsp;
     <a href="activity.jsp" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
         <%
@@ -49,9 +53,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <a href="/wjw/myactivity.jsp?username=<%=loginname%>" target="_parent" title="myactivity">发布活动</a>
   	&nbsp;&nbsp;
   	<a href="contact.jsp"title="contact">联系我们</a> 
-      &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;
         <%
-    	if(loginname!=""&&password!="")
+    	if(loginname!=null&&loginname!=""&&password!=null&&password!="")
     	{
 	    	out.print("欢迎你 ");
 	    	out.print("<b>");
@@ -62,17 +66,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	else
     	out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
       %>
-    
-    
+    </div>
     <br><br>
-    <%String pagenum=request.getParameter("page");
+    <br><br>
+    <%
+    String pagenum=request.getParameter("page");
  //   out.println(pagenum);
    	int pageNum = 0;
     	if(pagenum==null)
     		pagenum="0";
     	pageNum = new Integer(pagenum).intValue();
     	    	
-    	int totalNum = DB.numData("activity_info");  //数据库中的活动总数
+    int totalNum = DB.numData("activity_info");  //数据库中的活动总数   //可以调用java中的方法
     	
     	int pageMax = totalNum/numTotal;
     	
@@ -80,38 +85,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	else if(pageNum>pageMax)pageNum=pageMax;
     	
     %>
+    <br><br><br><br>
+
+    <div style="width:100%;float:left;font-family:楷体;font-size:48px;text-align: center">  
     总活动数：<%=totalNum%>
-     <br><br><br><br>
- <table width="1500" height="30" cellspacing="0" cellpadding="0" border="2">
+     </div>
+     
+     <br><br>
+    
+ <table cellspacing="0" cellpadding="0" border="0"   style="font-size:32px" align="center">
 <% 	
-  	ActivityInfor actList=new ActivityInfor() ;
+//  	ActivityInfor actList=new ActivityInfor() ;
   	int i=totalNum-numTotal*pageNum;
   	while(i>totalNum-numTotal*(pageNum+1)&&i>0){
+  			DB.displayData(i);  			
   			i--;
-  			actList.setAbstractPic("111.png");
-			actList.setActName("锤子"); 
-			actList.setAdress("交大");
-			actList.setId(i+1);
-			actList.setStatement("这是一个游戏gr");	
 %>
-    <tr onmouseover="loadMore()">	
-    <td>	
-    		<div>
-    			<dl>
-    			<dt>
-    				<a href="/woju/servlet/detial1?id=<%=actList.getId()%> " target="_blank"><img src="<%=actList.getAbstractPic() %>" hspace="40" vspace="30" width="40" height="30"></a>
-    			</dt>
-    			<dd class=dd_name><%=actList.getId()%></dd>
-    			<dd class=dd_name><%=actList.getStatement()%></dd>
-    			</dl>
-    		</div>
+        
+    <%
+    String type="";
+    if(ActivityInfor.getType().equals("game"))type = "001.png";  //不能用 ActivityInfor.getType()=="game"
+    else if(ActivityInfor.getType().equals("sport"))type = "002.jpg";
+    else if(ActivityInfor.getType().equals("study"))type = "003.jpg";
+    else if(ActivityInfor.getType().equals("geek"))type = "004.png";
+    else  type = "004.png";
+ /* 
+   switch (ActivityInfor.getType())  //jdk1.7以下switch不支持String
+    {
+	    case "game":
+	    	type = "001.png";
+	    	break;
+	    case "sport":
+	    	type = "002.jpg";
+	    	break;
+	     case "study":
+	    	type = "003.jpg";
+	    	break;
+	    case "geek":
+	    	type = "004.png";
+	    	break;
+	    default:
+	    	break;
+    }
+    */
+     %>
+     <tr>
+    	<td><a href="/woju/servlet/detial1?id=<%=ActivityInfor.getActivityID()%> " target="_blank"><img src="<%=type%>" hspace="40" vspace="30" width="80" height="60"></a></td><tr>
+    	<td><b>活动序号：</b></td><td> <%=ActivityInfor.getActivityID()%></td><tr>
+ 		<td><b>活动名称：</b></td><td> <%=ActivityInfor.getActName()%></td><tr>
+ 		<td><b>发布人：</b></td><td> <%=ActivityInfor.getReleaser()%></td><tr>
+    			<td><b>报名截止时间：</b></td><td> <%=ActivityInfor.getDeadtime()%></td><tr>
+    			<td><b>活动开始时间：</b></td><td> <%=ActivityInfor.getStarttime()%></td><tr>    			
+    		    <td><b>人数限制：</b></td><td> <%=ActivityInfor.getMember()%></td><tr>
+    			<td><b>活动简介：</b></td><td> <%=ActivityInfor.getActabstract()%></td><tr>
+    
      <%
     }     //为什么时好时坏？？？？
      %>  
     </table>  
-    <br>
-    <br>
-    <table border="0">
+    <br><br>
+    <br><br>
+    
+    <table border="0" align="center">
     <tr>
     <td align="center" >
      <input type="button" name="lastpage" value="上一页"onclick="javascript:window.location.href='activity.jsp?page=<%=String.valueOf(pageNum-1) %>';" >
@@ -127,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </td>
      </tr>
      </table>
-      
+      <br><br><br>
   </body>
 </html>
 

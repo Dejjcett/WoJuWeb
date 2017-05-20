@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" import=" java.text.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,7 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   
   <body>
-   <h1> 我聚--发布活动</h1>
+   <div style="width:50%;height:40px;float:left;font-family:楷体;font-size:72px">   
+   &nbsp;&nbsp;&nbsp;&nbsp;我聚--发布活动
+	</div>
+   <div style="width:50%;height:20px;float:right;font-family:宋体;font-size:24px">
+    <br><br>
       <a href="/woju/welcome.jsp" target="_top" title="welcome">首页</a> &nbsp;&nbsp;
     <a href="/woju/activity.jsp" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
     	<%
@@ -35,9 +39,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <a href="/wjw/myactivity.jsp?username=<%=loginname%>" target="_parent" title="myactivity">发布活动</a>
   	&nbsp;&nbsp;
     <a href="/woju/contact.jsp"title="contact">联系我们</a> 
-      &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;
         <%
-    	if(loginname!="")
+    	if(loginname!=""&&loginname!=null)
     	{
 	    	out.print("欢迎你 ");
 	    	out.print("<b>");
@@ -46,15 +50,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	out.print("<a href=\"/woju/loginout.jsp\">退出登录</a>");   	
     	}
     	else
-    	out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
+    	{
+	    	loginname="";
+    		out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
+    	}
       %>
-    <br><br><br><br>
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
    
 <form action="/woju/servlet/activitySubmit" name="myform" method="post" onsubmit="return validate(this)">
 <h2>活动概况</h2>
 	<table>
 	<tr>
-	<td>活动名：</td><td><input type="text" name="acttivityName" size="10" maxlength="10"></td>	
+	<td>发起人：</td><td><input type="text" name="releaser" size="10" maxlength="10" value="<%=loginname%>" readonly>
+	<%
+	if(loginname=="")out.print("<a href=\"/woju/login.jsp\">未登录，请先登录</a>");
+	 %></td>	
+	</tr>	
+	<tr>
+	<td>活动名：</td><td><input type="text" name="acttivityName" size="10" maxlength="10" ></td>	
 	</tr>
 	<tr>
 	<td>活动类型：</td>
@@ -64,10 +81,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="radio" name="activitytype" value="geek" >极客</td>
 	</tr>
 	<tr>
-	<td>报名截止时间：</td><td><input type="text" name="deadtime"></td>
+	<td>报名截止时间：</td><td><input type="text" name="deadtime" maxlength="16"><div style="font-size:8px">请使用“2000-01-01 24:00”的时间格式</div></td>
 	</tr>
 	<tr>
-	<td>活动时间：</td><td><input type="text" name="starttime"></td>
+	<td>活动时间：</td><td><input type="text" name="starttime" maxlength="16"><div style="font-size:8px">请使用“2000-01-01 24:00”的时间格式</div></td>
 	</tr>
 	<tr>
 	<td>活动人数：</td><td><input type="text" name="member"></td>
@@ -91,9 +108,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         editor.setData('这里是需要传递给CKEditor编辑器实例的值');
 		editor.getData();
     };
+    
         function validate(myform) {  
+        
+
+        
         //JavaScript判空，如果确定  
         var editor_data = CKEDITOR.instances.content.getData();
+  
+  		 if(myform.releaser.value.length==0)  
+        {
+  			alert("对不起，您不是会员，无权发布活动");
+ 			return false;
+  		}
   
         if(myform.acttivityName.value.length == 0||myform.deadtime.value.length ==0||
   		myform.starttime.value.length == 0||myform.actabstract.value.length ==0||myform.member.value.length ==0)
@@ -101,11 +128,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			alert("活动简介信息不能为空");
  			return false;
   		}
- /* 		 if(loginname==""||loginname==null)  
-        {
-  			alert("对不起，您不是会员，无权发布活动");
- 			return false;
-  		}*/
+
+
+
+
         if(editor_data==null||editor_data==""){  
             alert("活动详情为空不能提交"); 
             return  false;
@@ -118,6 +144,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		CKEDITOR.instances[instance].updateElement();
  //           }  
         }
+        
+ 
+        
 //		editor.updateElement(); //非常重要的一句代码        干什么用的？
 		return true;
     }

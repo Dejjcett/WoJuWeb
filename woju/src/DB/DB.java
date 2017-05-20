@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import entity.ActivityInfor;
+
 /*
  * http://blog.csdn.net/hhhccckkk/article/details/8927766
  * �ο�������
@@ -177,5 +179,42 @@ public class DB {
 			   e.printStackTrace();
 			  }		
 			 return false;
+	}
+	
+	public static void  displayData(int id)
+	{
+		String sId = Integer.toString(id);
+		Connection con = null; 
+		  con = (Connection) getcon(con);  
+		  PreparedStatement ps = null;
+		 String sql = "select *  from activity_info where activityID="+"\""+sId+"\"";//从数据库中查询
+		 //mysql语句中加入变量的方法！！！！！！！！
+		 ps = (PreparedStatement) getpsta(con, sql);
+		 ResultSet rs = null;
+		 try {
+			 rs = ps.executeQuery();
+			 if(rs.next()){
+				 ActivityInfor.setActivityID(null);
+				 ActivityInfor.setActName(null);
+				 ActivityInfor.setDeadtime(null);
+				 ActivityInfor.setStarttime(null);
+				 ActivityInfor.setType(null);
+				 ActivityInfor.setMember(2);
+				 ActivityInfor.setActabstract(null);
+				 ActivityInfor.setReleaser(null);
+//				 ActivityInfor.setContent(null);
+				 ActivityInfor.setActivityID(sId);
+				 ActivityInfor.setActName(rs.getString("actname"));
+				 ActivityInfor.setDeadtime(rs.getString("deadtime"));
+				 ActivityInfor.setStarttime(rs.getString("starttime"));
+				 ActivityInfor.setType(rs.getString("type"));
+				 ActivityInfor.setActabstract(rs.getString("actabstract"));
+				 ActivityInfor.setReleaser(rs.getString("releaser"));
+				 ActivityInfor.setMember(rs.getInt("memeber"));				 
+//				 ActivityInfor.setContent(rs.getString("content"));
+			 }
+			  } catch (SQLException e) {
+			   e.printStackTrace();
+			  }	
 	}
 }

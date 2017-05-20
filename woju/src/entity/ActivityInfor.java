@@ -1,42 +1,75 @@
 package entity;
 
 public class ActivityInfor {
-
-	private String actName;
-	private int id;
-	private String statement;
-	private String adress;
-	private String abstractPic;
 	
-	public String getActName() {
+	
+//		String Username=null;
+	private static String activityID=null;
+	private static String actName=null;
+	private static String deadtime=null;
+	private static String starttime=null;	
+	private static String type=null;
+	private static int member=0;
+	private static String actabstract=null;
+	private static String Content=null;
+	private static String releaser=null;
+	
+	
+	public static String getReleaser() {
+		return releaser;
+	}
+	public static void setReleaser(String releaser) {
+		ActivityInfor.releaser = releaser;
+	}
+	public static String getActivityID() {
+		return activityID;
+	}
+	public static void setActivityID(String activityID) {
+		ActivityInfor.activityID = activityID;
+	}
+	public static String getActName() {
 		return actName;
 	}
-	public void setActName(String actName) {
-		this.actName = actName;
+	public static void setActName(String actName) {
+		ActivityInfor.actName = actName;
 	}
-	public int getId() {
-		return id;
+	public static String getDeadtime() {
+		return deadtime;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public static void setDeadtime(String deadtime) {
+		ActivityInfor.deadtime = deadtime;
 	}
-	public String getStatement() {
-		return statement;
+	public static String getStarttime() {
+		return starttime;
 	}
-	public void setStatement(String statement) {
-		this.statement = statement;
+	public static void setStarttime(String starttime) {
+		ActivityInfor.starttime = starttime;
 	}
-	public String getAdress() {
-		return adress;
+	public static String getType() {
+		return type;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public static void setType(String type) {
+		ActivityInfor.type = type;
 	}
-	public String getAbstractPic() {
-		return abstractPic;
+	public static int getMember() {
+		return member;
 	}
-	public void setAbstractPic(String abstractPic) {
-		this.abstractPic = abstractPic;
+	public static void setMember(int member) {
+		ActivityInfor.member = member;
 	}
+	public static String getActabstract() {
+		return actabstract;
+	}
+	public static void setActabstract(String actabstract) {
+		ActivityInfor.actabstract = actabstract;
+	}
+	public static String getContent() {
+		return Content;
+	}
+	public static void setContent(String content) {
+		Content = content;
+	}
+	
+	
 	
 }

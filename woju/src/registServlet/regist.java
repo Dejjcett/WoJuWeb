@@ -73,7 +73,7 @@ public class regist extends HttpServlet {
 		  try {
 		   ps.setString(1, userName);
 		   ps.setString(2, passWord);
-		   ps.setString(3, null);
+		   ps.setString(3, null);                        //  如果没有   插入不了   操作无效
 		   ps.executeUpdate();
 		   ps.close();
 		  } catch (SQLException e) {

@@ -65,6 +65,13 @@
     <servlet-name>closePage</servlet-name>
     <servlet-class>ClosePage.closePage</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>addMember</servlet-name>
+    <servlet-class>AddMember.addMember</servlet-class>
+  </servlet>
+
 
 
 
@@ -114,6 +121,10 @@
   <servlet-mapping>
     <servlet-name>closePage</servlet-name>
     <url-pattern>/servlet/closePage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addMember</servlet-name>
+    <url-pattern>/servlet/addMember</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
