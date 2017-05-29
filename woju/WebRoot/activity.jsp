@@ -41,23 +41,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br><br>
     <a href="welcome.jsp" target="_top" title="welcome">首页</a> &nbsp;&nbsp;
     <a href="activity.jsp" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
-        <%
-     	String loginname = "";
+    <%
+      	String loginname="";
     	String password="";
+    	String flag="";
     	if(session.getAttribute("loginUser")!=null)
     	loginname = session.getAttribute("loginUser").toString();
     	if(session.getAttribute("passWord")!=null)
     	password = session.getAttribute("passWord").toString();
+    	if(session.getAttribute("adminFlag")!=null)
+    	flag = session.getAttribute("adminFlag").toString();
+ //   	if(loginname!=""&&password!="")
   %>
     	
-   <a href="/wjw/myactivity.jsp?username=<%=loginname%>" target="_parent" title="myactivity">发布活动</a>
+   <a href="/wjw/myactivity.jsp?username=<%=loginname%>&Flag=<%=flag%>" target="_parent" title="myactivity">发布活动</a>
   	&nbsp;&nbsp;
-  	<a href="contact.jsp"title="contact">联系我们</a> 
-      &nbsp;
-        <%
-    	if(loginname!=null&&loginname!=""&&password!=null&&password!="")
+   <%
+   if(loginname==""||password=="")
+   {%>
+   <a href="contact.jsp"title="contact">联系我们</a>  
+   &nbsp;&nbsp;
+   <%}
+    	if(loginname!=""&&password!="")
     	{
-	    	out.print("欢迎你 ");
+    	if(flag.equals("0"))
+    	{
+    	%>
+    	 <a href="contact.jsp"title="contact">联系我们</a>     
+      		&nbsp;&nbsp;欢迎你
+    	<%
+    	}
+	    if(flag.equals("1"))
+	    {
+	    %>
+	    <a href="allusers.jsp"title="用户管理">用户管理</a>     
+      		&nbsp;&nbsp;管理员
+      		<%
+      		}
 	    	out.print("<b>");
 	    	out.print(loginname);
 	    	out.print("</b>   ");
@@ -66,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	else
     	out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
       %>
-    </div>
+      </div>
     <br><br>
     <br><br>
     <%
@@ -134,11 +154,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<td><b>活动序号：</b></td><td> <%=ActivityInfor.getActivityID()%></td><tr>
  		<td><b>活动名称：</b></td><td> <%=ActivityInfor.getActName()%></td><tr>
  		<td><b>发布人：</b></td><td> <%=ActivityInfor.getReleaser()%></td><tr>
-    			<td><b>报名截止时间：</b></td><td> <%=ActivityInfor.getDeadtime()%></td><tr>
-    			<td><b>活动开始时间：</b></td><td> <%=ActivityInfor.getStarttime()%></td><tr>    			
-    		    <td><b>人数限制：</b></td><td> <%=ActivityInfor.getMember()%></td><tr>
-    			<td><b>活动简介：</b></td><td> <%=ActivityInfor.getActabstract()%></td><tr>
-    
+    	<td><b>报名截止时间：</b></td><td> <%=ActivityInfor.getDeadtime()%></td><tr>
+    	<td><b>活动开始时间：</b></td><td> <%=ActivityInfor.getStarttime()%></td><tr>    			
+    	<td><b>人数限制：</b></td><td> <%=ActivityInfor.getMember()%></td><tr>
+    	<td><b>活动简介：</b></td><td> <%=ActivityInfor.getActabstract()%></td><tr>
+    <%if(flag.equals("1")) {%>
+    	<td><a href="/woju/servlet/actDelete?id=<%=ActivityInfor.getActivityID()%> ">删除该活动</a></td><tr>
+    	<%} %>
      <%
     }     //为什么时好时坏？？？？
      %>  

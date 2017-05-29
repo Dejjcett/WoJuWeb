@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import entity.ActivityInfor;
+import entity.Comment;
+import entity.User;
 
 /*
  * http://blog.csdn.net/hhhccckkk/article/details/8927766
@@ -156,6 +158,7 @@ public class DB {
 		 
 		 return num;
 	}
+
 	
 	public static boolean searchData(String name)
 	{
@@ -217,4 +220,128 @@ public class DB {
 			   e.printStackTrace();
 			  }	
 	}
+
+	public static void  displayComm(String actid,int comid)
+	{
+//		String cId = Integer.toString(comid);
+		Connection con = null; 
+		  con = (Connection) getcon(con);  
+		  PreparedStatement ps = null;
+		 String sql = "select *  from commit_info where actId="+"\""+actid+"\"";//从数据库中查询
+		 //mysql语句中加入变量的方法！！！！！！！！
+		 ps = (PreparedStatement) getpsta(con, sql);
+		 ResultSet rs = null;
+		 try {
+			 rs = ps.executeQuery();
+			 if(rs.absolute(comid)){
+				 Comment.setComId(null);
+				 Comment.setActId(null);
+				 Comment.setReviewer(null);
+				 Comment.setComment(null);
+				 Comment.setComId(rs.getString("comId"));
+				 Comment.setActId(actid);
+				 Comment.setReviewer(rs.getString("reviewer"));
+				 Comment.setComment(rs.getString("content"));
+			 }
+			  } catch (SQLException e) {
+			   e.printStackTrace();
+			  }	
+	}
+	
+	
+	public static void  displayUser(int id)
+	{
+	//	String sId = Integer.toString(id);
+		Connection con = null; 
+		  con = (Connection) getcon(con);  
+		  PreparedStatement ps = null;
+		  String sql = "select * from user1_info ";
+	 //mysql语句中加入变量的方法！！！！！！！！
+		 ps = (PreparedStatement) getpsta(con, sql);
+		 ResultSet rs = null;
+		 try {
+			 rs = ps.executeQuery();
+			 if(rs.absolute(id)){                                                                 //绝对定位
+				 User.setUsername(null);
+				 User.setPassword(null);
+				 User.setUsername(rs.getString("username"));
+				 User.setPassword(rs.getString("password"));
+			 }
+			  } catch (SQLException e) {
+			   e.printStackTrace();
+			  }	
+	}
+	
+	public static int numUser()
+	{
+		Connection con = null; 
+		  con = (Connection) getcon(con);  
+		  PreparedStatement ps = null;
+		 String sql = "select *  from user1_info";
+		 ps = (PreparedStatement) getpsta(con, sql);
+		 ResultSet rs = null;
+		 int num = 0;
+		 
+		 try {
+			 
+			 rs = ps.executeQuery();			
+//*****method 1********//
+			 while(rs.next()){
+				 num++;
+			 }
+/*
+* http://bbs.csdn.net/topics/390936237?page=1
+*method3
+  String sql = "select count(*) rec from (select * from worker) ww";  
+  ResultSet rs = st.executeQuery(sql);  
+  int rowCount = 0;  
+  while (rs.next()) {  
+      rowCount = rs.getInt("rec");  	
+*/
+			 
+			   ps.close();
+			  } catch (SQLException e) {
+				  num = -1;
+			   e.printStackTrace();
+			  }		 
+		 
+		 return num;
+	}
+	
+	public static int numComm(String target)
+	{
+		Connection con = null; 
+		  con = (Connection) getcon(con);  
+		  PreparedStatement ps = null;
+		 String sql = "select *  from commit_info where actId="+"\""+target+"\"";
+		 ps = (PreparedStatement) getpsta(con, sql);
+		 ResultSet rs = null;
+		 int num = 0;
+		 
+		 try {
+			 
+			 rs = ps.executeQuery();			
+//*****method 1********//
+			 while(rs.next()){
+				 num++;
+			 }
+/*
+ * http://bbs.csdn.net/topics/390936237?page=1
+ *method3
+    String sql = "select count(*) rec from (select * from worker) ww";  
+    ResultSet rs = st.executeQuery(sql);  
+    int rowCount = 0;  
+    while (rs.next()) {  
+        rowCount = rs.getInt("rec");  	
+ */
+			 
+			   ps.close();
+			  } catch (SQLException e) {
+				  num = -1;
+			   e.printStackTrace();
+			  }		 
+		 
+		 return num;
+	}
+	
 }

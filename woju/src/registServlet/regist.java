@@ -68,12 +68,12 @@ public class regist extends HttpServlet {
 		  Connection con = null;  
 		  con = (Connection) DB.getcon(con);  
 		  PreparedStatement ps = null;    
-		  String sql = "insert into  user1_info values(?,?,?)";   
+		  String sql = "insert into  user1_info values(?,?)";   
 		  ps = (PreparedStatement) DB.getpsta(con, sql);
 		  try {
 		   ps.setString(1, userName);
 		   ps.setString(2, passWord);
-		   ps.setString(3, null);                        //  如果没有   插入不了   操作无效
+//		   ps.setString(3, null);                        //  如果没有   插入不了   操作无效
 		   ps.executeUpdate();
 		   ps.close();
 		  } catch (SQLException e) {

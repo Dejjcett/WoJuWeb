@@ -1,4 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import = "DB.DB" %>
+<%@ page import="entity.User" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'contact.jsp' starting page</title>
+    <title>所有用户</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,28 +25,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
- <div style="width:50%;height:40px;float:left;font-family:楷体;font-size:68px">   
-   &nbsp;&nbsp;&nbsp;&nbsp; 我聚--联系我们
+    <body>
+   <div style="width:50%;height:40px;float:left;font-family:楷体;font-size:68px">   
+   &nbsp;&nbsp;&nbsp;&nbsp; 我聚--用户管理
    </div>
     <div style="width:50%;height:20px;float:right;font-family:宋体;font-size:24px">
     <br><br>
     <a href="welcome.jsp" target="_top" title="welcome">首页</a> &nbsp;&nbsp;
-    <a href="activity.jsp" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
-        <%
- 		String loginname="";
+    <a href="activity.jsp?page=2" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
+    
+    <%
+      	String loginname="";
     	String password="";
     	String flag="";
-    	if(session.getAttribute("loginUser")!=null)    	
-    	loginname = session.getAttribute("loginUser").toString();    	
+    	if(session.getAttribute("loginUser")!=null)
+    	loginname = session.getAttribute("loginUser").toString();
     	if(session.getAttribute("passWord")!=null)
     	password = session.getAttribute("passWord").toString();
     	if(session.getAttribute("adminFlag")!=null)
     	flag = session.getAttribute("adminFlag").toString();
+ //   	if(loginname!=""&&password!="")
   %>
     	
    <a href="/wjw/myactivity.jsp?username=<%=loginname%>&Flag=<%=flag%>" target="_parent" title="myactivity">发布活动</a>
   	&nbsp;&nbsp;
-    <%
+   <%
    if(loginname==""||password=="")
    {%>
    <a href="contact.jsp"title="contact">联系我们</a>  
@@ -75,7 +80,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
       %>
       </div>
-    <br><br><br><br>
-    
+      <br><br><br><br>
+      <br><br><br><br>
+      <% 	int i = DB.numUser(); int j = 1;	%>
+       <div style="width:100%;float:left;font-family:楷体;font-size:48px;text-align: center">  
+   	 共有<%=i %>个用户
+         </div>
+         <br><br><br><br>
+     
+  		
+ <table cellspacing="0" cellpadding="0" border="0"   style="font-size:32px" align="center" width="1500" height="10">
+  		<%
+    	while(j<=i){
+  			DB.displayUser(j);  			
+  			j++;
+  			
+%>
+     <tr><td align="right"><b>用户名：</b></td><td align="left"> <%=User.getUsername()%></td></tr>
+ 	<tr><td align="right"><b>用户密码：</b></td><td align="left"> <%=User.getPassword()%></td></tr>
+ 	<tr><td align="right"><a href="/woju/servlet/userDelete?name=<%=User.getUsername()%> ">删除该用户</a></td><td align="left"> &nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+ 	<tr><td align="right"><b>&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td align="left"> &nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+ <%
+    }     //为什么时好时坏？？？？
+     %>  
+     </table>
   </body>
 </html>

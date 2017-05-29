@@ -33,21 +33,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <%
       	String loginname="";
     	String password="";
+    	String flag="";
     	if(session.getAttribute("loginUser")!=null)
     	loginname = session.getAttribute("loginUser").toString();
     	if(session.getAttribute("passWord")!=null)
     	password = session.getAttribute("passWord").toString();
+    	if(session.getAttribute("adminFlag")!=null)
+    	flag = session.getAttribute("adminFlag").toString();
  //   	if(loginname!=""&&password!="")
   %>
     	
-   <a href="/wjw/myactivity.jsp?username=<%=loginname%>" target="_parent" title="myactivity">发布活动</a>
+   <a href="/wjw/myactivity.jsp?username=<%=loginname%>&Flag=<%=flag%>" target="_parent" title="myactivity">发布活动</a>
   	&nbsp;&nbsp;
-    <a href="contact.jsp"title="contact">联系我们</a> 
-      &nbsp;&nbsp;
+  	
+
    <%
+   if(loginname==""||password=="")
+   {%>
+   <a href="contact.jsp"title="contact">联系我们</a>  
+   &nbsp;&nbsp;
+   <%}
     	if(loginname!=""&&password!="")
     	{
-	    	out.print("欢迎你 ");
+    	if(flag.equals("0"))
+    	{
+    	%>
+    	 <a href="contact.jsp"title="contact">联系我们</a>     
+      		&nbsp;&nbsp;欢迎你
+    	<%
+    	}
+	    if(flag.equals("1"))
+	    {
+	    %>
+	    <a href="allusers.jsp"title="用户管理">用户管理</a>     
+      		&nbsp;&nbsp;管理员
+      		<%
+      		}
 	    	out.print("<b>");
 	    	out.print(loginname);
 	    	out.print("</b>   ");
@@ -57,6 +78,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
       %>
       </div>
+      
+      <!--
+       http://anshansuixinsuoyu.blog.163.com/blog/static/33765229201211142412148/
+       jsp+mysql实现对数据库的增删改查 
+       -->
+      
     <br><br><br><br>
   </body>
 </html>

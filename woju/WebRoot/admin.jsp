@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>用户登录</title>
+    <title>管理员登录</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -49,7 +49,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="/wjw/myactivity.jsp" target="_parent" title="myactivity">发布活动</a> &nbsp;&nbsp;
     <a href="contact.jsp"title="contact">联系我们</a> 
       &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="regist.jsp"title="regist" >没有帐号，注册</a>
     </div>
     <br><br>  <br><br>
     <br><br>  <br><br>
@@ -61,11 +60,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <br><br><br><br><br><br><br>
     <div style="width:35%;height:40px;float:right;">
-    <form name="login"  action="/woju/servlet/login"  method="post" 
+    <form name="adminlogin"  action="/woju/servlet/adminlogin"  method="post" 
     							 onsubmit="return validate(this)">
     	<table bgColor="#ffffff"  style="font-family:楷体;font-size:30px">    	
     		<tr>
-    		  <td align="right">帐号：</td>
+    		  <td align="right">管理员帐号：</td>
     		  <td align="left"><input type="text" name="username" size="20" maxlength="10"style=" height:30px;" /></td>
     		</tr>
     		<tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr><tr>	</tr><tr></tr><tr></tr>
@@ -77,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<tr>
     		  <td align="right"><input type="reset" name="reset" value="重置"style=" height:30px;" /></td>
     		  <td align="center"><input type="submit" name="submit" value="确认"style=" height:30px;" /></td>
-      		  <td align="right" ><a href="admin.jsp"title="refind" target="_self">管理员登录</a></td>
+      		  <td align="right" ><a href="login.jsp"title="refind" target="_self">用户登录</a></td>
    			</tr>
     		
     	</table>  

@@ -133,30 +133,33 @@ public class detial1 extends HttpServlet {
 		  out.println("人");
 		  out.print("<br>");
 		 // if(Member.getNowNum()<Member.getTotalNum())
-		  if(num<Member.getTotalNum())
-		  {
+		  session.setAttribute("id", actID);
+		  session.setAttribute("Col", col);
 			  if(name!=null&&name!="")
-			  {  
-				  session.setAttribute("id", actID);
-				  session.setAttribute("Col", col);
-				  if(flag)
-					  out.println("您已报名");
+			  {  				  
+				  if(num<Member.getTotalNum())
+				  {					  
+					  if(flag)
+						  out.println("您已报名");
+					  else
+						  out.println("<a href=\"/woju/servlet/addMember\">我要报名</a>");
+					  }
 				  else
-					  out.println("<a href=\"/woju/servlet/addMember\">我要报名</a>");
+				  {
+					  out.println("名额已满，无法报名");
+				  }
 			  }
-			  else out.println("<a href=\"/woju/login.jsp\">尚未登录，无法报名,去登录</a>");
-			
+			  else 
+				  {
+				  	out.println("<a href=\"/woju/login.jsp\">尚未登录，无法报名,去登录</a><br>");
+//				  	out.println("<a href=\"/woju/login.jsp\">尚未登录，无法评论</a>");
+				  }
+			  out.println("<br>");		  
+			  out.println("<a href=\"/woju/comment.jsp\">查看评论</a>");	
 			  //*********************!!!!!!!!!!!!!!!!!!**********************////
 			  //  out.println("<a href='f_index.jsp?id="+rs.getInt("id")+"'>修改</a>");
-			  //输出修改按钮，每当点击记录的时候，系统就把对应的id值传到修改所在的页面。		  
-			  
-		  }
-		  else
-		  {
-			  out.println("名额已满，无法报名");
-		  }
-		  
-		  
+			  //输出修改按钮，每当点击记录的时候，系统就把对应的id值传到修改所在的页面。
+		 
 		 }
 		
 	private void getMember(String actId) {		 

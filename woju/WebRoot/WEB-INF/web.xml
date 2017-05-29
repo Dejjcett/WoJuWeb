@@ -71,6 +71,41 @@
     <servlet-name>addMember</servlet-name>
     <servlet-class>AddMember.addMember</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>addComment</servlet-name>
+    <servlet-class>AddComment.addComment</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>adminlogin</servlet-name>
+    <servlet-class>Adminlogin.adminlogin</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>actDelete</servlet-name>
+    <servlet-class>ActDelete.actDelete</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>userDelete</servlet-name>
+    <servlet-class>UserDelete.userDelete</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>commDelete</servlet-name>
+    <servlet-class>CommDelete.commDelete</servlet-class>
+  </servlet>
+
+
+
+
+
 
 
 
@@ -125,6 +160,26 @@
   <servlet-mapping>
     <servlet-name>addMember</servlet-name>
     <url-pattern>/servlet/addMember</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addComment</servlet-name>
+    <url-pattern>/servlet/addComment</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>adminlogin</servlet-name>
+    <url-pattern>/servlet/adminlogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>actDelete</servlet-name>
+    <url-pattern>/servlet/actDelete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>userDelete</servlet-name>
+    <url-pattern>/servlet/userDelete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>commDelete</servlet-name>
+    <url-pattern>/servlet/commDelete</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

@@ -34,33 +34,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="/woju/activity.jsp" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
     	<%
     	String loginname="";
+    	String flag="";
     	loginname = request.getParameter("username");
+    	flag = request.getParameter("Flag");
     	 %>
    <a href="/wjw/myactivity.jsp?username=<%=loginname%>" target="_parent" title="myactivity">发布活动</a>
   	&nbsp;&nbsp;
-    <a href="/woju/contact.jsp"title="contact">联系我们</a> 
-      &nbsp;&nbsp;
-        <%
+   <%
+   if(loginname==""||loginname==null)
+   {%>
+   <a href="/woju/contact.jsp"title="contact">联系我们</a>  
+   &nbsp;&nbsp;
+   <%}
     	if(loginname!=""&&loginname!=null)
     	{
-	    	out.print("欢迎你 ");
+    	if(flag.equals("0"))
+    	{
+    	%>
+    	 <a href="/woju/contact.jsp"title="contact">联系我们</a>     
+      		&nbsp;&nbsp;欢迎你
+    	<%
+    	}
+	    if(flag.equals("1"))
+	    {
+	    %>
+	    <a href="/woju/allusers.jsp"title="用户管理">用户管理</a>     
+      		&nbsp;&nbsp;管理员
+      		<%
+      		}
 	    	out.print("<b>");
 	    	out.print(loginname);
 	    	out.print("</b>   ");
 	    	out.print("<a href=\"/woju/loginout.jsp\">退出登录</a>");   	
     	}
     	else
-    	{
-	    	loginname="";
-    		out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
-    	}
+    	out.print("<a href=\"/woju/login.jsp\">登录/注册</a>");
       %>
-    </div>
+      </div>
     <br><br>
     <br><br>
     <br><br>
     <br><br>
-   
+
+<div style="width:1200px;position:absolute;left:20%;top:40%;margin-top:-190px;">
 <form action="/woju/servlet/activitySubmit" name="myform" method="post" onsubmit="return validate(this)">
 <h2>活动概况</h2>
 	<table>
@@ -94,10 +110,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</tr>
 	</table>
 	<h2>活动详情</h2>
-    <textarea id="content" name="content"></textarea>
+    <textarea id="content" name="content" ></textarea>
+    <br>
     <input type="submit"  value="发布活动"/> 
-    
 </form>
+</div>
+
   <script type="text/javascript"  src="/wjw/ckeditor/ckeditor.js">
   //   只要改这个东西   就有问题     为什么。。。。。。。。。。。。。?????????。。。。
   </script>
@@ -120,39 +138,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         {
   			alert("对不起，您不是会员，无权发布活动");
  			return false;
-  		}
-  
+  		}  
         if(myform.acttivityName.value.length == 0||myform.deadtime.value.length ==0||
   		myform.starttime.value.length == 0||myform.actabstract.value.length ==0||myform.member.value.length ==0)
   		{
   			alert("活动简介信息不能为空");
  			return false;
   		}
-
-
-
-
         if(editor_data==null||editor_data==""){  
             alert("活动详情为空不能提交"); 
             return  false;
         }
-        else{  
+        else{
  //           if(confirm(editor_data)){  
-  //          document.myform.submit();  
-  
+  //          document.myform.submit();    
 		for ( instance in CKEDITOR.instances ) 
 		CKEDITOR.instances[instance].updateElement();
  //           }  
-        }
-        
- 
-        
+        }        
 //		editor.updateElement(); //非常重要的一句代码        干什么用的？
 		return true;
     }
+
+ 
+</script>
     
-    
-</script>		
   </body>
   
   
