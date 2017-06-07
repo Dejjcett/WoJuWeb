@@ -1,0 +1,13 @@
+Reviewer 2 of CASE 2017 submission 10
+
+Comments to the author
+======================
+
+In the chapter II.B, When you estimate the three parameter
+of the Weibull distribution, you mentioned about some
+methods to get them. However, there is no evidence to back
+up your opinions about their strength and weakness. So you
+had better put some reference for the methods. I could not
+understand what the novelty of your paper is because the
+Weibull distribution is very well known the probability
+distribution. 

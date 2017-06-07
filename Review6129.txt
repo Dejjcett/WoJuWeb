@@ -1,0 +1,44 @@
+Reviewer 4 of CASE 2017 submission 10
+
+Comments to the author
+======================
+
+This paper needs to be read again.
+
+Regarding the abstract:
+I believe that in order to write that the historical fault
+data confirm a claim, the authors need to prove that claim
+or need to cite some other papers.
+
+In the first part of the introduction the problem related
+to the reliability of the spreaders must be explain better.
+Moreover, in the last part of the introduction, the authors
+have to clarify better the presentation of the results. 
+
+Section II
+check better formula (1), in my opinion the authors cannot
+write that 
+log_2 n = ln n.
+In formula (1), all the variables must be defined
+accurately.
+The definition of N and &#916;N are not clear to me.
+
+The comments at the end of Section II, between formula (5)
+and the end of this section is not clear to me.
+
+Section III.
+The author have to justify why they use the Correlation
+Coefficient Method. They need to give some references about
+the method and about the use of it.
+
+Section III.
+Explain better why Weibull distribution with 3 parameters
+cannot be used.
+
+Fig.2 must be improved.
+
+Last part of the paper, the second part of Section III and
+all Section IV must be improved and clarified better.
+
+I believe that this paper cannot be accepted now, 
+unless the editor will ask the authors to improve it.

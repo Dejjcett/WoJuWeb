@@ -44,7 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
     <div style="width:50%;height:20px;float:right;font-family:宋体;font-size:24px">
     <br><br>
-    <a href="welcome.jsp" target="_top" title="welcome">首页</a> &nbsp;&nbsp;
+ 
+    <a href="welcome.jsp" target="_top" title="welcome"class="button button-primary button-small">首页</a> &nbsp;&nbsp;
     <a href="activity.jsp" target="_self" title="activity">所有活动</a> &nbsp;&nbsp;
     <a href="/wjw/myactivity.jsp" target="_parent" title="myactivity">发布活动</a> &nbsp;&nbsp;
     <a href="contact.jsp"title="contact">联系我们</a> 
